@@ -1,0 +1,16 @@
+instance_name: clevercloud-rio-${CC_PRETTY_INSTANCE_NAME}
+
+#listen: 0.0.0.0:10301
+
+proxies:
+    -
+        listen: "0.0.0.0:8080"
+        forward: ${RIO_PROJECT_FORWARD}
+        project_key: ${RIO_PROJECT_KEY}
+        preserve_host: false
+        #trusted_proxies: ${CC_REVERSE_PROXY_IPS}"
+
+log:
+    stderr:
+       level: info
+
