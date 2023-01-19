@@ -76,3 +76,10 @@ framework:
 CC_REVERSE_PROXY_IPS=127.0.0.1
 ###< clevercloud ###
 ```
+
+## Troubleshooting
+
+### The app keeps redirecting to the CC domain (like `https://app-xxxxxx-xxxx-308021983139.cleverapps.io`)
+
+Don't forget to uncheck the "Force HTTPS" in your app's Information.  
+You can also update it using : `clever config update --disable-force-https`
