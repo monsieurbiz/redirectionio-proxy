@@ -7,4 +7,3 @@ tar xvzf redirectionio-agent-latest_any_amd64.tar.gz
 rm -rf redirectionio-agent-latest_any_amd64.tar.gz
 
 envsubst < template.agent.yml > agent.yml
-
