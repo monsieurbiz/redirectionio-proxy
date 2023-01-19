@@ -39,6 +39,7 @@ Don't forget to update them!
 
 ```bash
 clever env -a proxy set CC_RUN_COMMAND "./redirection-agent/redirectionio-agent --config-file ./agent.yml"
+clever env -a proxy set CC_PRE_BUILD_HOOK "./clevercloud/pre_build_hook.sh"
 clever env -a proxy set PORT "8080"
 clever env -a proxy set RIO_INSTANCE_NAME "CleverCloud"
 clever env -a proxy set RIO_PROJECT_KEY "RIO PROJECT KEY"
