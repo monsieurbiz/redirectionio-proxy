@@ -2,8 +2,6 @@
 
 ## DNS
 
-All `*.preprod.monsieurbiz.cloud` domains are pointing to Clever Cloud on HTTP records.
-
 For HTTP:
 ```
 CNAME record: domain.par.clever-cloud.com.
@@ -32,6 +30,8 @@ clever domain -a proxy favourite set your.domain.com -a proxy
 ```
 
 Flavor can be `nano` if `pico` is too small, or `XS/S` to avoid shared CPU or for a more stable instance for high traffic
+
+Be careful! We use our repository to deploy the proxies! Clone it and use your own if needed!
 
 ### Environment variables
 
