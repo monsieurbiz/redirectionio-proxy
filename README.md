@@ -26,7 +26,7 @@ clever create -a proxy -o "ORG NAME or ID" --type node --region par --github "mo
 clever scale -a proxy --flavor pico
 clever config -a proxy update --enable-zero-downtime --enable-cancel-on-push --enable-force-https
 clever domain -a proxy add your.domain.com
-clever domain -a proxy favourite set your.domain.com -a proxy
+clever domain -a proxy favourite set your.domain.com
 ```
 
 Flavor can be `nano` if `pico` is too small, or `XS/S` to avoid shared CPU or for a more stable instance for high traffic
