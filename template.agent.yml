@@ -5,7 +5,7 @@ project_keys:
 
 proxies:
     -
-        listen: "0.0.0.0:${PORT}"
+        listen: "0.0.0.0:8081"
         forward: "${RIO_FORWARD}"
         project_key: "${RIO_PROJECT_KEY}"
         preserve_host: ${RIO_PRESERVE_HOST}
@@ -18,4 +18,3 @@ proxies:
 log:
     stderr:
        level: ${RIO_LOG_LEVEL}
-
