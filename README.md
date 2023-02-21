@@ -39,21 +39,24 @@ Don't forget to update them!
 
 ```bash
 clever env -a proxy set CC_RUN_COMMAND "./redirection-agent/redirectionio-agent --config-file ./agent.yml"
+clever env -a proxy set CC_PRE_BUILD_HOOK "./clevercloud/pre_build_hook.sh"
 clever env -a proxy set CC_PRE_RUN_HOOK "./clevercloud/pre_run_hook.sh"
 clever env -a proxy set PORT "8080"
 clever env -a proxy set RIO_INSTANCE_NAME "CleverCloud"
-clever env -a proxy set RIO_PROJECT_KEY "RIO PROJECT KEY"
-clever env -a proxy set RIO_FORWARD "http://…cleverapps.io/"
 clever env -a proxy set RIO_PRESERVE_HOST "false"
 clever env -a proxy set RIO_ADD_RULE_IDS_HEADER "true"
 clever env -a proxy set RIO_COMPRESS "true"
 clever env -a proxy set RIO_REQUEST_BODY_SIZE_LIMIT "200MB"
 clever env -a proxy set RIO_LOG_LEVEL "info"
+clever env -a proxy set RIO_PROJECT_KEY "RIO PROJECT KEY"
+clever env -a proxy set RIO_FORWARD "http://…cleverapps.io/"
 ```
 
 `RIO_FORWARD` is in `http`! Not `https`. It is mandatory!
 
-The `Pre Run` hook creates the `agent.yml` configuration file and downloads the latest redirectionio binary.
+The `Pre Build` hook downloads the latest redirectionio binary. If you want to force a new version of the agent, force rebuild it.
+
+The `Pre Run` hook creates the `agent.yml` configuration file.
 
 ### Start the proxy
 
@@ -83,5 +86,5 @@ CC_REVERSE_PROXY_IPS=127.0.0.1
 
 ### The app keeps redirecting to the CC domain (like `https://app-xxxxxx-xxxx-308021983139.cleverapps.io`)
 
-Don't forget to uncheck the "Force HTTPS" in your app's Information.  
+Don't forget to uncheck the "Force HTTPS" in your app's Information.
 You can also update it using : `clever config update --disable-force-https`
