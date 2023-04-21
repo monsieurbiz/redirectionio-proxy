@@ -14,8 +14,8 @@ proxies:
         compress: ${RIO_COMPRESS}
         request_body_size_limit: ${RIO_REQUEST_BODY_SIZE_LIMIT}
         allow_invalid_certificates: false
+        access_log: true
 
-access_log: true
 log:
     stderr:
        level: ${RIO_LOG_LEVEL}
