@@ -9,7 +9,7 @@ proxies:
         forward: "${RIO_FORWARD}"
         project_key: "${RIO_PROJECT_KEY}"
         preserve_host: ${RIO_PRESERVE_HOST}
-        #trusted_proxies: "${CC_REVERSE_PROXY_IPS}"
+        #trusted_proxies: [${RIO_TRUSTED_PROXIES}]
         add_rule_ids_header: ${RIO_ADD_RULE_IDS_HEADER}
         compress: ${RIO_COMPRESS}
         request_body_size_limit: ${RIO_REQUEST_BODY_SIZE_LIMIT}

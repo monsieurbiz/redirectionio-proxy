@@ -50,6 +50,7 @@ clever env -a proxy set RIO_REQUEST_BODY_SIZE_LIMIT "200MB"
 clever env -a proxy set RIO_LOG_LEVEL "info"
 clever env -a proxy set RIO_PROJECT_KEY "RIO PROJECT KEY"
 clever env -a proxy set RIO_FORWARD "http://…cleverapps.io/"
+clever env -a proxy set RIO_TRUSTED_PROXIES ""
 ```
 
 `RIO_FORWARD` is in `http`! Not `https`. It is mandatory!
@@ -57,6 +58,16 @@ clever env -a proxy set RIO_FORWARD "http://…cleverapps.io/"
 The `Pre Build` hook downloads the latest redirectionio binary. If you want to force a new version of the agent, force rebuild it.
 
 The `Pre Run` hook creates the `agent.yml` configuration file.
+
+#### Behind a proxy like Cloudflare
+
+You need to declare your proxy's IP addresses.
+
+For Cloudflare: (see https://www.cloudflare.com/fr-fr/ips/)
+
+```
+clever env -a proxy set RIO_TRUSTED_PROXIES "173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22"
+```
 
 ### Start the proxy
 
