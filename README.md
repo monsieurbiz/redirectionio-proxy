@@ -77,22 +77,41 @@ clever restart --without-cache -a proxy
 
 ## Changes to be made on a Symfony app
 
-Framework config:
+Change the framework config:
 
 ```
 framework:
-    trusted_proxies: '%env(CC_REVERSE_PROXY_IPS)%'
+    trusted_proxies: '%env(CC_REVERSE_PROXY_IPS)%,%env(TRUSTED_PROXIES)%'
     trusted_headers: [ 'x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port', 'x-forwarded-prefix' ]
 ```
 
-.env:
+And add two variables in the `.env`:
 
 ```
+TRUSTED_PROXIES=
+
 ###> clevercloud ###
 CC_REVERSE_PROXY_IPS=127.0.0.1
 ###< clevercloud ###
 ```
 
+The `CC_REVERSE_PROXY_IPS` is defined automatically by CleverCloud, cf [documentation](https://www.clever-cloud.com/doc/reference/reference-environment-variables/#set-by-the-deployment-process).
+
+But, the proxy IP is not in this list, and we trust it to get the client IP. We have several solutions:
+
+1. Set the env variable `TRUSTED_PROXIES=REMOTE_ADDR` on the PHP app in Clever:
+
+```
+clever env -a prod set TRUSTED_PROXIES "REMOTE_ADDR"
+clever restart --without-cache -a prod
+```
+
+We trust **all proxies**, but this is the easiest solution for the moment.
+
+2. Use [Tailscale](https://www.clever-cloud.com/doc/reference/reference-environment-variables/#tailscale-support) to create a private VPN with the proxy and the PHP apps. But we don't have any feedback performances on exchanges between apps. 
+
+3. Wait for Clever Cloud to support VPCs. According to our information, this is on their roadmap.
+ 
 ## Troubleshooting
 
 ### The app keeps redirecting to the CC domain (like `https://app-xxxxxx-xxxx-308021983139.cleverapps.io`)
