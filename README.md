@@ -59,6 +59,13 @@ The `Pre Build` hook downloads the latest redirectionio binary. If you want to f
 
 The `Pre Run` hook creates the `agent.yml` configuration file.
 
+You can disable the persistent HTTP connection between the proxy and the backend server by setting the env variable `RIO_KEEP_ALIVE_ENABLED` to "false".
+For example, if you use Clever cloud's network groups, the backend may change IP and cause 503 errors after deployment.
+
+```bash
+clever env -a proxy set RIO_KEEP_ALIVE_ENABLED "false"
+```
+
 #### Behind a proxy like Cloudflare
 
 You need to declare your proxy's IP addresses.
@@ -108,10 +115,10 @@ clever restart --without-cache -a prod
 
 We trust **all proxies**, but this is the easiest solution for the moment.
 
-2. Use [Tailscale](https://www.clever-cloud.com/doc/reference/reference-environment-variables/#tailscale-support) to create a private VPN with the proxy and the PHP apps. But we don't have any feedback performances on exchanges between apps. 
+2. Use [Tailscale](https://www.clever-cloud.com/doc/reference/reference-environment-variables/#tailscale-support) to create a private VPN with the proxy and the PHP apps. But we don't have any feedback performances on exchanges between apps.
 
 3. Wait for Clever Cloud to support VPCs. According to our information, this is on their roadmap.
- 
+
 ## Troubleshooting
 
 ### The app keeps redirecting to the CC domain (like `https://app-xxxxxx-xxxx-308021983139.cleverapps.io`)
