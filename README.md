@@ -66,6 +66,11 @@ For example, if you use Clever cloud's network groups, the backend may change IP
 clever env -a proxy set RIO_KEEP_ALIVE_ENABLED "false"
 ```
 
+You can allow invalid SSL certificates:  
+```bash
+clever env -a proxy set RIO_ALLOW_INVALID_CERTIFICATES "true"
+```
+
 #### Behind a proxy like Cloudflare
 
 You need to declare your proxy's IP addresses.
