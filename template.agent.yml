@@ -14,7 +14,7 @@ proxies:
         add_rule_ids_header: ${RIO_ADD_RULE_IDS_HEADER}
         compress: ${RIO_COMPRESS}
         request_body_size_limit: ${RIO_REQUEST_BODY_SIZE_LIMIT}
-        allow_invalid_certificates: false
+        allow_invalid_certificates: ${RIO_ALLOW_INVALID_CERTIFICATES}
         access_log: true
         keep_alive:
             enabled: ${RIO_KEEP_ALIVE_ENABLED}
