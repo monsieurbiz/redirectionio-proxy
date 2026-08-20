@@ -1,5 +1,8 @@
 # Redirection.io Proxy for Clever Cloud
 
+> [!WARNING]
+> This project is obsolete, please see https://redirection.io/documentation/developer-documentation/clever-cloud-integration
+
 ## DNS
 
 For HTTP:
